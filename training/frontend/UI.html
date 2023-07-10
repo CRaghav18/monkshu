@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body background="https://wallpaperaccess.com/full/3133075.jpg">
+
+<div class="overlay hidden">
+    <button class="close" onclick="hide()"> X </button>
+    <input class="input" type="gmail" placeholder="Email">
+    <input class="input" type="password" placeholder="Password">
+    
+    <button class="loginButton" onclick="login()"> Login </button>
+    
+    </div>
+
+    <div class="overlay2">
+        <button class="close" onclick="hide()"> X </button>
+        <input class="input2" type="gmail" placeholder="Email">
+        <input class="input2" id="pass" type="password" placeholder="Password">
+        <input class="input2" id="confPass" type="password" placeholder="Confirm">
+        <h class="h"> </h>
+
+        
+        <button class="submitButton" onclick="submit()"> Submit </button>
+        
+        </div>
+     
+    
+    <div class="flex">
+         
+        <button class="signButtons" onclick="signIn()"> Sign in </button>
+       
+        <button class="signButtons" onclick="signUp()"> Sign up </button>
+       
+    </div>
+    <script src='main.js'></script>
+</body>
+</html>
