@@ -29,6 +29,7 @@
     "mustache": "^4.2.0",
     "natural": "^6.5.0",
     "nodemailer": "latest",
+    "sqlite": "^4.2.1",
     "sqlite3": "latest",
     "terser": "latest",
     "uglify-js": "latest"

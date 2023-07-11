@@ -1,6 +1,11 @@
-let testing = function(){
+let testing = function(db){
 
-console.log('');
+console.log('db connection');
+// db.run(
+    
+//     //"INSERT INTO login VALUES ('123@gmail.com','123')"
+    
+//     );
 
 }
 
