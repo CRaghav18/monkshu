@@ -10,6 +10,7 @@ const PORT = 3000
 import bodyParser from "body-parser";
 
 app.use(cors())
+
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
@@ -30,12 +31,17 @@ import testing from '../../signUp.js'
 
 
 
-app.get('/SignUp',(req,res)=> {
-    res.send('Backend working')
-    console.log(testing(db));
-    console.log(req.body)
+
+
+
+app.post('/SignUp',(req,res)=> {
+   
+    testing(db, req.body);
+
+    // console.log(req.body)
     
 })
+
 
 app.listen(PORT)
 
