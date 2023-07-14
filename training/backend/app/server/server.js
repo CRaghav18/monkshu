@@ -3,6 +3,16 @@
 import express from 'express'
 import sqlite3 from 'sqlite3'
 import cors from "cors";
+import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
+
+// import auth from '/Users/raghav/Documents/DLT/monkshu/training/middleware.js'
+
+
+dotenv.config()
+
+
 
 const app = express();
 const PORT = 3000
@@ -21,6 +31,7 @@ if (err){
 }
 else {
     console.log('Database working');
+    var salt = bcrypt.genSaltSync(10)
 }
 
 })
@@ -28,7 +39,9 @@ else {
 
 import testing from '../../signUp.js'
 
+import login from '../../login.js'
 
+import getBooks from '../../getBooks.js'
 
 
 
@@ -42,6 +55,20 @@ app.post('/SignUp',(req,res)=> {
     
 })
 
+app.post('/login',(req,res)=>{
+
+
+login(db, req.body, res)
+
+
+
+})
+
+app.get('/getBooks',(req,res)=>{
+
+getBooks(db, res)
+
+})
 
 app.listen(PORT)
 

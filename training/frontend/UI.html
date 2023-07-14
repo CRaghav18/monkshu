@@ -9,8 +9,14 @@
 
 <div class="overlay hidden">
     <button class="close" onclick="hide()"> X </button>
-    <input class="input" type="gmail" placeholder="Email">
-    <input class="input" type="password" placeholder="Password">
+    <input class="input" id = 'logmail' type="gmail" placeholder="Email">
+    <input class="input" id = 'logpass' type="password" placeholder="Password">
+<!-- 
+    <select class="dropDown" >
+        <option >Member</option>
+        <option >Librarian</option>
+        <option >Admin</option>
+        </select> -->
     
     <button class="loginButton" onclick="login()"> Login </button>
     
@@ -19,15 +25,11 @@
     <div class="overlay2 hidden">
         <button class="close" onclick="hide()"> X </button>
 
+
+        <input class="input2" id='userName' type="text" placeholder="UserName">
         <input class="input2" id='gmail' type="gmail" placeholder="Email">
         <input class="input2" id="pass" type="password" placeholder="Password">
         <input class="input2" id="confPass" type="password" placeholder="Confirm">
-        
-        <select class="input2" >
-        <option >Member</option>
-        <option >Librarian</option>
-        <option >Admin</option>
-        </select>
         
         <h class="h"> </h>
 

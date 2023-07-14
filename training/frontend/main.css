@@ -82,6 +82,18 @@ border-radius: 5rem;
 
 }
 
+.dropDown{
+
+display: block;
+width: 29%;
+padding: 2%;
+font-size: 156%;
+border: 5px solid rgb(83,83,83);
+margin-top: 4%;
+margin-left: 34%;
+
+}
+
 .loginButton{
 
     display: flex;
@@ -91,7 +103,7 @@ border-radius: 5rem;
     border: 5px solid rgb(83, 83, 83);
     background-color: rgb(255, 255, 255);
     text-align: center;
-    margin: 3rem 16rem;
+    margin: 3rem 17rem;
     cursor: pointer;
 
 
@@ -107,7 +119,7 @@ border-radius: 5rem;
     border: 5px solid rgb(83, 83, 83);
     background-color: rgb(255, 255, 255);
     text-align: center;
-    margin: 3rem 18rem;
+    margin: 1rem 19rem;
     cursor: pointer;
 
 

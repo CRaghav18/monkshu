@@ -2,12 +2,17 @@
 
 let overlay = document.querySelector('.overlay')
 let overlay2 = document.querySelector('.overlay2')
+let userName = document.querySelector('#userName')
 let gmail = document.querySelector('#gmail')
 let pass = document.querySelector('#pass')
 let confPass = document.querySelector('#confPass')
 let h = document.querySelector('.h')
 
+let logmail = document.querySelector('#logmail')
+let logpass = document.querySelector('#logpass')
+
 let data = {}
+let cred = {}
 
 
 let signIn = function(){
@@ -44,8 +49,10 @@ let submit = function(){
 
     }
 
+    data.userName = userName.value
     data.gmail = gmail.value
     data.pass = pass.value
+    
     
 
 fetch('http://localhost:3000/SignUp',{
@@ -54,6 +61,24 @@ fetch('http://localhost:3000/SignUp',{
         'Content-Type': 'application/json',
     },
     body: JSON.stringify(data)}
+)
+.then()
+.catch()
+
+}
+
+let login = function(){
+
+    cred.mail = logmail.value
+    cred.pass = logpass.value
+
+
+    fetch('http://localhost:3000/login',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cred)}
 )
 .then()
 .catch()
