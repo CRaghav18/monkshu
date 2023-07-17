@@ -15,36 +15,36 @@ let data = {}
 let cred = {}
 
 
-let signIn = function(){
-    
+let signIn = function () {
+
     overlay.style.display = 'block';
 }
 
-let signUp = function(){
+let signUp = function () {
 
     overlay2.style.display = 'block'
 }
 
 
-let hide = function(){
-    
+let hide = function () {
+
     overlay.style.display = 'none';
     overlay2.style.display = 'none'
 
 }
 
 
-let submit = function(){
+let submit = function () {
 
-    
-    if(pass.value === ''){
+
+    if (pass.value === '') {
         h.textContent = "Enter Password"
         h.style.color = "red";
-    } else if(pass.value !== confPass.value){
+    } else if (pass.value !== confPass.value) {
         h.textContent = 'password not matched'
         h.style.color = 'red'
 
-    }else if(pass.value === confPass.value){
+    } else if (pass.value === confPass.value) {
         h.textContent = ''
 
     }
@@ -52,38 +52,45 @@ let submit = function(){
     data.userName = userName.value
     data.gmail = gmail.value
     data.pass = pass.value
-    
-    
 
-fetch('http://localhost:3000/SignUp',{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)}
-)
-.then()
-.catch()
+
+
+    fetch('http://localhost:3000/SignUp', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }
+    )
+        .then()
+        .catch()
 
 }
 
-let login = function(){
+let login = function () {
 
     cred.mail = logmail.value
     cred.pass = logpass.value
 
 
-    fetch('http://localhost:3000/login',{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(cred)}
-)
-.then()
-.catch()
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cred)
+    }
+    )
+        .then((user) => {
+
+            console.log(user);
+            localStorage.setItem('token', user[0].Token);
+        })
+        .catch()
 
 }
+
 
 
 

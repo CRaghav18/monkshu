@@ -3,8 +3,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
 
-
-
 let login = function(db,cred,res){
 
 try{
@@ -42,18 +40,14 @@ rows.forEach (function(row) {
     if(pass === user[0].Password){
 
         const token = jwt.sign({
-
             user_id:user[0].Id, 
             username:user[0].Username,
             Email
-
         },
         `${process.env.TOKEN_KEY}`,
         {
             expiresIn: "2h"
-        }
-        
-    )
+        })
 
     user[0].Token = token
 
