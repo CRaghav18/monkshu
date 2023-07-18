@@ -41,11 +41,12 @@ app.post('/SignUp', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
+
     login(db, req.body, res)
 })
 
 
-app.get('/getBooks', jwtAuth, (req, res) => {
+app.post('/getBooks', jwtAuth, (req, res) => {
     getBooks(db, res)
 })
 

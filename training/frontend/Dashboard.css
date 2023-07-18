@@ -1,80 +1,70 @@
 .background-image {
-    background-image: url("https://s2982.pcdn.co/wp-content/uploads/2017/04/martin-quotes-about-books.jpg.optimal.jpg") ;
-    background-repeat: no-repeat;
-    background-size: 1500px 700px;
-  
-  
-  }
-
-
-
-.sideBar{
-
-    background: rgb(17, 101, 150);
-    position: fixed;
-    width: 225px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    padding: 20px 0;
-
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-
+  background-image: url("https://s2982.pcdn.co/wp-content/uploads/2017/04/martin-quotes-about-books.jpg.optimal.jpg");
+  background-repeat: no-repeat;
+  background-size: 1500px 700px;
 }
 
-.img{
-    display: block;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    margin: 0 auto;
+.sideBar {
+  background: rgb(17, 101, 150);
+  position: fixed;
+  width: 225px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 20px 0;
+
+  color: rgb(255, 255, 255);
+  font-size: 14px;
 }
 
-.name{
- 
-   margin-left: 54px;
-
+.img {
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
-.post{
-
-    color: rgb(206, 240, 253);
-    font-size: 16px;
-    margin-left: 79px;
-    margin-top: -16px;
-}
-.button{
-
-    display: block;
-    width: 70%;
-    padding: 3%;
-    font-size: 141%;
-    border: 6px solid rgb(42,120,147);
-    margin-top: 8%;
-    margin-left: 14%;
-    transition: 0.5s ease;
+.name {
+  margin-left: 54px;
 }
 
-button:hover{
-
-cursor: pointer;
-color: #a2ecff;
-
+.post {
+  color: rgb(206, 240, 253);
+  font-size: 16px;
+  margin-left: 79px;
+  margin-top: -16px;
+}
+.button {
+  display: block;
+  width: 70%;
+  padding: 3%;
+  font-size: 141%;
+  border: 6px solid rgb(42, 120, 147);
+  margin-top: 8%;
+  margin-left: 14%;
+  transition: 0.5s ease;
 }
 
-.books{
-
-background-color: rgb(255, 255, 255);
-
-
+button:hover {
+  cursor: pointer;
+  color: #a2ecff;
 }
 
-.table{
-
-display: flex;
-margin-left: 300px;
-justify-content: space-between;
-
+.books {
+  background-color: rgb(255, 255, 255);
 }
 
+.table {
+  margin-top: 100px;
+  margin-left: 300px;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 70%;
+  background-color: bisque;
+}
+
+td,
+th {
+  border: 0.5px solid black;
+}

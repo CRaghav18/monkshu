@@ -1,5 +1,6 @@
 'use strict'
 
+
 let overlay = document.querySelector('.overlay')
 let overlay2 = document.querySelector('.overlay2')
 let userName = document.querySelector('#userName')
@@ -73,7 +74,6 @@ let login = function () {
     cred.mail = logmail.value
     cred.pass = logpass.value
 
-
     fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -82,10 +82,14 @@ let login = function () {
         body: JSON.stringify(cred)
     }
     )
-        .then((user) => {
+        .then(async (user) => {
 
-            console.log(user);
-            localStorage.setItem('token', user[0].Token);
+            let data = await user.json();
+
+            let token = data[0].Token
+
+            localStorage.setItem('token', token);
+
         })
         .catch()
 
