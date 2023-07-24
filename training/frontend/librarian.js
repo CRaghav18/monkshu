@@ -3,7 +3,7 @@
 let overlay = document.querySelector('.overlay')
 
 
-let addBook = function () {
+let addB = function () {
 
 
     overlay.style.display = 'block';
@@ -14,3 +14,6 @@ let hide = function () {
     overlay.style.display = 'none';
 
 }
+
+
+

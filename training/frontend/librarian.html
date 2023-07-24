@@ -12,7 +12,7 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="Libranian.css"
+      href="librarian.css"
     />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
         <button class="button" id="getUser">
           <i class="fa-solid fa-users"></i> Users
         </button>
-        <button class="button" onclick="addBook()">
+        <button class="button" onclick="addB()">
           <i class="fa-solid fa-plus"></i> Add Book
         </button>
         <button class="button">
@@ -48,24 +48,24 @@
 
     <div class="overlay hidden">
       <button class="close" onclick="hide()">X</button>
-      <input class="input" type="Text" placeholder="Name" />
-      <input class="input" type="Text" placeholder="Author" />
-      <input class="input" type="number" placeholder="ISBN" />
-      <input class="input" type="number" placeholder="Access No." />
-      <input class="input" type="number" placeholder="Price" />
-      <input class="input" type="number" placeholder="Shelf No." />
-      <input class="input" type="number" placeholder="Row No." />
-      <input class="input" type="number" placeholder="Availability" />
+      <input class="input" id="name" type="Text" placeholder="Name" />
+      <input class="input" id="author" type="Text" placeholder="Author" />
+      <input class="input" id="ISBN" type="number" placeholder="ISBN" />
+      <input class="input" id="access" type="number" placeholder="Access No." />
+      <input class="input" id="price" type="number" placeholder="Price" />
+      <input class="input" id="shelf" type="number" placeholder="Shelf No." />
+      <input class="input" id="row" type="number" placeholder="Row No." />
 
-      <button class="addButton" onclick="add()">Add</button>
+      <button class="addButton" id="addBook">Add</button>
     </div>
 
     <table class="table">
       <tbody class="myTable"></tbody>
     </table>
 
+    <script src="addBook.js" type="module"></script>
     <script src="getBooks.js" type="module"></script>
     <script src="getUser.js" type="module"></script>
-    <script src="libranian.js"></script>
+    <script src="librarian.js"></script>
   </body>
 </html>

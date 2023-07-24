@@ -11,6 +11,7 @@ import testing from '../../signUp.js'
 import login from '../../login.js'
 import getBooks from '../../getBooks.js'
 import getUser from '../../getUser.js';
+import addBook from '../../addBook.js'
 
 
 dotenv.config()
@@ -53,6 +54,10 @@ app.post('/getBooks', jwtAuth, (req, res) => {
 app.post('/getUser', jwtAuth, (req, res) => {
     getUser(db, res)
 
+})
+
+app.post('/addBook', jwtAuth, (req, res) => {
+    addBook(db, req, res)
 })
 
 

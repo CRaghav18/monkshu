@@ -1,5 +1,10 @@
 
+
 export const buildTable = (data) => {
+
+	let removeBook = function () {
+
+	}
 
 	var table = document.getElementsByClassName('myTable')[0];
 	let initialRow = `<tr><td></td></tr>`
@@ -17,18 +22,17 @@ export const buildTable = (data) => {
 	for (var i = 0; i < data.length; i++) {
 		var row = `
 				<tr>
-      				<td>${data[i].Name}</td>
+      				<td>${data[i].Name}</td> 
       				<td>${data[i].Author}</td>
       				<td>${data[i].ISBN}</td>
       				<td>${data[i].AccessNo}</td>
       				<td>${data[i].Price}</td>
       				<td>${data[i].ShelfNo}</td>
       				<td>${data[i].RowNo}</td>
-      				<td>${data[i].Availability}</td>              
-              </tr>`
-
-
-
+      				<td>${data[i].Availability}</td>   
+					<td><button id=${data[i].ISBN} onClick=${removeBook()}>Remove</button></td>           
+              </tr> `
 		table.innerHTML += row
 	}
 };
+
