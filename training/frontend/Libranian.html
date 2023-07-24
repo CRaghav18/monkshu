@@ -12,7 +12,7 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="Dashboard.css"
+      href="Libranian.css"
     />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@
       />
 
       <h1 class="name">Test User</h1>
-      <p class="post">Member</p>
+      <p class="post">Librarian</p>
 
       <div>
         <button class="button">
@@ -34,8 +34,11 @@
         <button class="button" id="getBooks">
           <i class="fa-solid fa-book"></i> Books
         </button>
-        <button class="button">
-          <i class="fa-solid fa-book-open"></i> My books
+        <button class="button" id="getUser">
+          <i class="fa-solid fa-users"></i> Users
+        </button>
+        <button class="button" onclick="addBook()">
+          <i class="fa-solid fa-plus"></i> Add Book
         </button>
         <button class="button">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
@@ -43,10 +46,26 @@
       </div>
     </div>
 
+    <div class="overlay hidden">
+      <button class="close" onclick="hide()">X</button>
+      <input class="input" type="Text" placeholder="Name" />
+      <input class="input" type="Text" placeholder="Author" />
+      <input class="input" type="number" placeholder="ISBN" />
+      <input class="input" type="number" placeholder="Access No." />
+      <input class="input" type="number" placeholder="Price" />
+      <input class="input" type="number" placeholder="Shelf No." />
+      <input class="input" type="number" placeholder="Row No." />
+      <input class="input" type="number" placeholder="Availability" />
+
+      <button class="addButton" onclick="add()">Add</button>
+    </div>
+
     <table class="table">
       <tbody class="myTable"></tbody>
     </table>
 
     <script src="getBooks.js" type="module"></script>
+    <script src="getUser.js" type="module"></script>
+    <script src="libranian.js"></script>
   </body>
 </html>

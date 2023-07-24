@@ -10,6 +10,7 @@ import jwtAuth from '../../../middleware.js'
 import testing from '../../signUp.js'
 import login from '../../login.js'
 import getBooks from '../../getBooks.js'
+import getUser from '../../getUser.js';
 
 
 dotenv.config()
@@ -37,7 +38,6 @@ const db = new sqlite3.Database('../db/test.db', (err) => {
 
 app.post('/SignUp', (req, res) => {
     testing(db, req.body);
-    // console.log(req.body)
 })
 
 app.post('/login', (req, res) => {
@@ -49,6 +49,12 @@ app.post('/login', (req, res) => {
 app.post('/getBooks', jwtAuth, (req, res) => {
     getBooks(db, res)
 })
+
+app.post('/getUser', jwtAuth, (req, res) => {
+    getUser(db, res)
+
+})
+
 
 app.listen(PORT)
 

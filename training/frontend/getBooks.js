@@ -31,11 +31,3 @@ export const getBooks = function () {
 
 document.getElementById("getBooks")
   .addEventListener("click", getBooks);
-
-
-/* 
-
-- connect login button to dashboard page
-- show no match/ incorrect credentials, empty  on login page
-
-*/
