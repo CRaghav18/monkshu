@@ -1,10 +1,9 @@
 
+import removeBook from "./removeBook.js";
 
 export const buildTable = (data) => {
 
-	let removeBook = function () {
 
-	}
 
 	var table = document.getElementsByClassName('myTable')[0];
 	let initialRow = `<tr><td></td></tr>`
@@ -30,9 +29,20 @@ export const buildTable = (data) => {
       				<td>${data[i].ShelfNo}</td>
       				<td>${data[i].RowNo}</td>
       				<td>${data[i].Availability}</td>   
-					<td><button id=${data[i].ISBN} onClick=${removeBook()}>Remove</button></td>           
+					<td><button id="${data[i].ISBN}" class="remove-btn">Remove</button></td>     
               </tr> `
 		table.innerHTML += row
+
+
 	}
+
+
 };
 
+document.addEventListener('click', function (event) {
+	const target = event.target;
+
+	if (target.classList.contains('remove-btn')) {
+		removeBook(target.id)
+	}
+});
