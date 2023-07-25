@@ -16,7 +16,8 @@ export const buildTable = (data) => {
 						<th> ${"Price"}</th>
 						<th> ${"Shelf No."}</th>
 						<th> ${"Row No."}</th>
-						<th> ${"Availability"}</th>`
+						<th> ${"Availability"}</th>
+						<th>${"<i class='fa-solid fa-trash'></i>"}</th>`
 
 	for (var i = 0; i < data.length; i++) {
 		var row = `
@@ -29,7 +30,9 @@ export const buildTable = (data) => {
       				<td>${data[i].ShelfNo}</td>
       				<td>${data[i].RowNo}</td>
       				<td>${data[i].Availability}</td>   
-					<td><button id="${data[i].ISBN}" class="remove-btn">Remove</button></td>     
+					<td>
+					<button id="${data[i].ISBN}" class="remove-btn">Remove</ button>
+					</td>     
               </tr> `
 		table.innerHTML += row
 

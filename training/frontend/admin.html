@@ -8,12 +8,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="librarian.css"
-    />
+    <link rel="stylesheet" type="text/css" media="screen" href="admin.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
@@ -25,7 +20,7 @@
       />
 
       <h1 class="name">Test User</h1>
-      <p class="post">Librarian</p>
+      <p class="post">Admin</p>
 
       <div>
         <button class="button">
@@ -38,7 +33,7 @@
           <i class="fa-solid fa-users"></i> Users
         </button>
         <button class="button" onclick="addB()">
-          <i class="fa-solid fa-plus"></i> Add Book
+          <i class="fa-solid fa-plus"></i> Librarian
         </button>
         <button class="button" id="LogOut">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
@@ -46,7 +41,7 @@
       </div>
     </div>
 
-    <div class="overlay hidden">
+    <!-- <div class="overlay hidden">
       <button class="close" onclick="hide()">X</button>
       <input class="input" id="name" type="Text" placeholder="Name" />
       <input class="input" id="author" type="Text" placeholder="Author" />
@@ -57,15 +52,15 @@
       <input class="input" id="row" type="number" placeholder="Row No." />
 
       <button class="addButton" id="addBook">Add</button>
-    </div>
+    </div> -->
 
     <table class="table">
       <tbody class="myTable"></tbody>
     </table>
 
-    <script src="addBook.js" type="module"></script>
+    <!-- <script src="addBook.js" type="module"></script> -->
     <script src="getBooks.js" type="module"></script>
     <script src="getUser.js" type="module"></script>
-    <script src="librarian.js"></script>
+    <script src="admin.js"></script>
   </body>
 </html>

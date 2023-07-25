@@ -58,7 +58,7 @@ button:hover {
 .table {
   margin-top: 100px;
   margin-left: 300px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 10px;
   width: 70%;
   background-color: bisque;

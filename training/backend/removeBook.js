@@ -1,6 +1,22 @@
-let removeBook = function () {
+let removeBook = function (db, req, res) {
 
-    console.log('working');
+    delete req.body.token
+    let isbn = req.body.isbn
+
+    let query = "DELETE FROM Books WHERE ISBN = ?";
+
+    db.run(query, [isbn], function (err, data) {
+
+        if (err) {
+            console.log(err.message);
+        } else {
+
+            res.send(data)
+        }
+
+
+    })
+
 }
 
 export default removeBook

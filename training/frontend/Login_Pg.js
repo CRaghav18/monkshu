@@ -90,6 +90,13 @@ let login = function () {
 
             localStorage.setItem('token', token);
 
+            if (data[0].Type === "Librarian") {
+                window.location.href = 'http://127.0.0.1:5500/training/frontend/librarian.html'
+            } else if (data[0].Type === "Member") {
+                window.location.href = 'http://127.0.0.1:5500/training/frontend/Dashboard.html'
+            } else if (data[0].Type === "Admin") { window.location.href = 'http://127.0.0.1:5500/training/frontend/admin.html' }
+
+            else { console.log('not working'); }
         })
         .catch()
 
