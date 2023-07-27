@@ -2,6 +2,10 @@ import { buildTable } from './tableUser.js';
 
 export const getUser = function () {
 
+  document.querySelector('.table').style.visibility = 'visible'
+
+  document.querySelector('.overlay').style.display = 'none'
+
   let data = {}
 
   data.token = localStorage.getItem('token');

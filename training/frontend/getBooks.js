@@ -1,6 +1,13 @@
 import { buildTable } from './table.js';
 
+
+
 export const getBooks = function () {
+
+  document.querySelector('.table').style.visibility = 'visible'
+
+  document.querySelector('.overlay').style.display = 'none'
+
 
   let data = {}
 
@@ -29,5 +36,9 @@ export const getBooks = function () {
     })
 };
 
-document.getElementById("getBooks")
-  .addEventListener("click", getBooks);
+
+let getBook = document.getElementById("getBooks")
+
+getBook.addEventListener("click", getBooks);
+
+

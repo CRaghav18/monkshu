@@ -1,5 +1,7 @@
 'use strict'
 
+let text = document.querySelector('.text2')
+
 
 export const addUser = function () {
 
@@ -21,14 +23,20 @@ export const addUser = function () {
     }
     )
         .then(async (data) => {
-
-            console.log(await data.json());
+            const newData = await data.json()
+            console.log(newData);
+            showError(newData.err)
 
         }).catch(async (err) => {
 
-            console.log(err.message);
-
+            showError(await err)
         })
 };
 
 document.getElementById('addUser').addEventListener('click', addUser)
+
+let showError = (error) => {
+    text.textContent = JSON.stringify(error)
+    text.style.color = "red";
+
+}

@@ -11,8 +11,8 @@ let login = function (db, cred, res) {
         let Password = cred.pass
 
 
-        if (!Email & !Password) {
-            return res.status(400).send("Incorrest Credentials");
+        if (!Email || !Password) {
+            return res.status(400).send({ err: "Incorrest Credentials" })
 
         }
 
@@ -21,13 +21,14 @@ let login = function (db, cred, res) {
         let selectQuery = "SELECT * FROM Users WHERE Email = ?";
 
         db.all(selectQuery, Email, function (err, rows) {
-
             if (err) {
-                res.status(400).json({ "error": err.message })
-                return;
+                return res.status(500).json({ "error": err.message });
             }
 
 
+            if (!rows || rows.length === 0) {
+                return res.status(400).send({ err: "User not found" });
+            }
 
             rows.forEach(function (row) {
                 user.push(row)
@@ -61,6 +62,7 @@ let login = function (db, cred, res) {
         });
     } catch (err) {
         console.log(err);
+        return res.status(500).json({ "error": "Internal server error" });
     }
 
 }

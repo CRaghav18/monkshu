@@ -18,9 +18,10 @@ const removeBook = function (isbn) {
 
             if (data) {
 
-                window.location.reload()
-                document.getElementById('getBooks').click()
-
+                const book = document.getElementById(isbn);
+                if (book) {
+                    book.remove();
+                }
 
                 console.log('Book has been deleted');
 

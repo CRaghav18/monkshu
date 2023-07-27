@@ -18,8 +18,10 @@ const removeUser = function (userName) {
 
             if (data) {
 
-                window.location.reload()
-
+                const userRow = document.getElementById(userName);
+                if (userRow) {
+                    userRow.remove();
+                }
                 console.log('User has been deleted');
 
             } else { console.log('there was some error'); }

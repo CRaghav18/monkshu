@@ -86,24 +86,46 @@ let login = function () {
 
             let data = await user.json();
 
-            let token = data[0].Token
-            let type = data[0].Type
+            console.log(data);
+            if (!data.err) {
+                let token = data[0].Token
+                let type = data[0].Type
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('type', type)
+                localStorage.setItem('token', token);
+                localStorage.setItem('type', type)
 
-            if (data[0].Type === "Librarian") {
-                window.location.href = 'http://127.0.0.1:5500/training/frontend/librarian.html'
-            } else if (data[0].Type === "Member") {
-                window.location.href = 'http://127.0.0.1:5500/training/frontend/Dashboard.html'
-            } else if (data[0].Type === "Admin") { window.location.href = 'http://127.0.0.1:5500/training/frontend/admin.html' }
+                if (logpass.value === '') {
+                    h.textContent = "Enter Password"
+                    h.style.color = "red";
 
-            else { console.log('not working'); }
+                } else {
+                    h.textContent = '';
+                }
+
+                if (data[0].Type === "Librarian") {
+                    window.location.href = 'http://127.0.0.1:5500/training/frontend/librarian.html'
+                } else if (data[0].Type === "Member") {
+                    window.location.href = 'http://127.0.0.1:5500/training/frontend/Dashboard.html'
+                } else if (data[0].Type === "Admin") { window.location.href = 'http://127.0.0.1:5500/training/frontend/admin.html' }
+
+                else { console.log('not working'); }
+            } else {
+                showError(data.err);
+            }
         })
-        .catch()
+        .catch((error) => {
+            console.error('Error:', error.message);
+            // alert('An error occurred: ' + error.message);
+        });
+};
+
+
+let showError = function (err) {
+
+    h.textContent = err
+    h.style.color = "red";
 
 }
-
 
 
 
