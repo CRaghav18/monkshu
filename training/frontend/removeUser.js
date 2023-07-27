@@ -1,12 +1,12 @@
 
-const removeBook = function (isbn) {
+const removeUser = function (userName) {
 
     let data = {}
 
     data.token = localStorage.getItem('token');
-    data.isbn = isbn
+    data.userName = userName
 
-    fetch('http://localhost:3000/removeBook', {
+    fetch('http://localhost:3000/removeUser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,10 +19,8 @@ const removeBook = function (isbn) {
             if (data) {
 
                 window.location.reload()
-                document.getElementById('getBooks').click()
 
-
-                console.log('Book has been deleted');
+                console.log('User has been deleted');
 
             } else { console.log('there was some error'); }
 
@@ -34,4 +32,4 @@ const removeBook = function (isbn) {
 };
 
 
-export default removeBook
+export default removeUser

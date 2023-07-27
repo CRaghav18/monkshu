@@ -32,8 +32,8 @@
         <button class="button" id="getUser">
           <i class="fa-solid fa-users"></i> Users
         </button>
-        <button class="button" onclick="addB()">
-          <i class="fa-solid fa-plus"></i> Librarian
+        <button class="button" onclick="addL()">
+          <i class="fa-solid fa-plus"></i> Add User
         </button>
         <button class="button" id="LogOut">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
@@ -41,26 +41,26 @@
       </div>
     </div>
 
-    <!-- <div class="overlay hidden">
+    <div class="overlay hidden">
       <button class="close" onclick="hide()">X</button>
-      <input class="input" id="name" type="Text" placeholder="Name" />
-      <input class="input" id="author" type="Text" placeholder="Author" />
-      <input class="input" id="ISBN" type="number" placeholder="ISBN" />
-      <input class="input" id="access" type="number" placeholder="Access No." />
-      <input class="input" id="price" type="number" placeholder="Price" />
-      <input class="input" id="shelf" type="number" placeholder="Shelf No." />
-      <input class="input" id="row" type="number" placeholder="Row No." />
+      <select class="dropDown" id="dropDown">
+        <option>Member</option>
+        <option>Librarian</option>
+      </select>
+      <input class="input" id="userName" type="Text" placeholder="Username" />
+      <input class="input" id="email" type="Text" placeholder="Email" />
+      <input class="input" id="pass" type="Text" placeholder="Password" />
 
-      <button class="addButton" id="addBook">Add</button>
-    </div> -->
+      <button class="addUser" id="addUser">Add</button>
+    </div>
 
     <table class="table">
       <tbody class="myTable"></tbody>
     </table>
 
-    <!-- <script src="addBook.js" type="module"></script> -->
     <script src="getBooks.js" type="module"></script>
     <script src="getUser.js" type="module"></script>
+    <script src="addUser.js" type="module"></script>
     <script src="admin.js"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@ export const getUser = function () {
   let data = {}
 
   data.token = localStorage.getItem('token');
+  data.type = localStorage.getItem('type')
 
   fetch('http://localhost:3000/getUser', {
     method: 'POST',

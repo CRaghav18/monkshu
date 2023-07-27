@@ -87,8 +87,10 @@ let login = function () {
             let data = await user.json();
 
             let token = data[0].Token
+            let type = data[0].Type
 
             localStorage.setItem('token', token);
+            localStorage.setItem('type', type)
 
             if (data[0].Type === "Librarian") {
                 window.location.href = 'http://127.0.0.1:5500/training/frontend/librarian.html'

@@ -64,7 +64,8 @@ button:hover {
   background-color: bisque;
 }
 
-.overlay {
+.overlay,
+.overlay2 {
   height: 50%;
   width: 50%;
   margin: 4rem 26rem;
@@ -104,7 +105,29 @@ th {
   margin-left: 4%;
 }
 
+.input2,
+.dropDown {
+  width: 23%;
+  padding: 1%;
+  font-size: 120%;
+  border: 5px solid rgb(83, 83, 83);
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
 .addButton {
+  display: flex;
+  width: 20%;
+  padding: 2%;
+  font-size: 200%;
+  border: 5px solid rgb(83, 83, 83);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3rem 17rem;
+  cursor: pointer;
+}
+
+.addUser {
   display: flex;
   width: 20%;
   padding: 2%;

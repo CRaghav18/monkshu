@@ -40,6 +40,9 @@
         <button class="button" onclick="addB()">
           <i class="fa-solid fa-plus"></i> Add Book
         </button>
+        <button class="button" onclick="addU()">
+          <i class="fa-solid fa-plus"></i> Add User
+        </button>
         <button class="button" id="LogOut">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
         </button>
@@ -59,6 +62,20 @@
       <button class="addButton" id="addBook">Add</button>
     </div>
 
+    <div class="overlay2 hidden">
+      <button class="close" onclick="hide()">X</button>
+
+      <select class="dropDown" id="dropDown">
+        <option>Member</option>
+        <option>Librarian</option>
+      </select>
+      <input class="input2" id="userName" type="Text" placeholder="Username" />
+      <input class="input2" id="email" type="Text" placeholder="Email" />
+      <input class="input2" id="pass" type="Text" placeholder="Password" />
+
+      <button class="addUser" id="addUser">Add</button>
+    </div>
+
     <table class="table">
       <tbody class="myTable"></tbody>
     </table>
@@ -66,6 +83,7 @@
     <script src="addBook.js" type="module"></script>
     <script src="getBooks.js" type="module"></script>
     <script src="getUser.js" type="module"></script>
+    <script src="addUser.js" type="module"></script>
     <script src="librarian.js"></script>
   </body>
 </html>

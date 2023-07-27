@@ -1,5 +1,7 @@
 'use strict'
 
+let overlay = document.querySelector('.overlay')
+
 let LogOut = document.getElementById('LogOut')
 
 
@@ -8,3 +10,13 @@ LogOut.addEventListener('click', function () { window.location.href = 'http://12
 
 
 
+const addL = function () {
+    overlay.style.display = 'block'
+}
+
+let hide = function () {
+
+    overlay.style.display = 'none';
+
+
+}

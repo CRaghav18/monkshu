@@ -1,6 +1,8 @@
 'use strict'
 
 let overlay = document.querySelector('.overlay')
+let overlay2 = document.querySelector('.overlay2')
+
 
 
 let addB = function () {
@@ -12,7 +14,16 @@ let addB = function () {
 let hide = function () {
 
     overlay.style.display = 'none';
+    overlay2.style.display = 'none';
 
+
+}
+
+
+let addU = function () {
+
+
+    overlay2.style.display = 'block';
 }
 
 let LogOut = document.getElementById('LogOut')
