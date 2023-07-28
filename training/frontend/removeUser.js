@@ -1,3 +1,6 @@
+'use strict'
+
+let token = localStorage.getItem('token')
 
 const removeUser = function (userName) {
 
@@ -9,7 +12,9 @@ const removeUser = function (userName) {
     fetch('http://localhost:3000/removeUser', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+
         },
         body: JSON.stringify(data)
     }

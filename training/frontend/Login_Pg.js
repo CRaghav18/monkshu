@@ -102,20 +102,16 @@ let login = function () {
                     h.textContent = '';
                 }
 
-                if (data[0].Type === "Librarian") {
-                    window.location.href = 'http://127.0.0.1:5500/training/frontend/librarian.html'
-                } else if (data[0].Type === "Member") {
+                if (data[0]) {
                     window.location.href = 'http://127.0.0.1:5500/training/frontend/Dashboard.html'
-                } else if (data[0].Type === "Admin") { window.location.href = 'http://127.0.0.1:5500/training/frontend/admin.html' }
 
-                else { console.log('not working'); }
+                } else { console.log('not working'); }
             } else {
                 showError(data.err);
             }
         })
         .catch((error) => {
-            console.error('Error:', error.message);
-            // alert('An error occurred: ' + error.message);
+            showError(error.message);
         });
 };
 

@@ -1,6 +1,8 @@
 'use strict'
 
 let text = document.querySelector('.text2')
+let token = localStorage.getItem('token')
+
 
 
 export const addUser = function () {
@@ -17,7 +19,9 @@ export const addUser = function () {
     fetch('http://localhost:3000/addUser', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+
         },
         body: JSON.stringify(data)
     }

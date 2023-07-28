@@ -1,10 +1,13 @@
 import { buildTable } from './tableUser.js';
 
+let token = localStorage.getItem('token')
+
 export const getUser = function () {
 
   document.querySelector('.table').style.visibility = 'visible'
-
   document.querySelector('.overlay').style.display = 'none'
+  document.querySelector('.overlay2').style.display = 'none'
+
 
   let data = {}
 
@@ -14,7 +17,9 @@ export const getUser = function () {
   fetch('http://localhost:3000/getUser', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+
     },
     body: JSON.stringify(data)
   }

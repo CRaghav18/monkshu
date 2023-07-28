@@ -48,7 +48,7 @@
 
 button:hover {
   cursor: pointer;
-  color: #a2ecff;
+  color: rgb(224, 0, 0);
 }
 
 .books {
@@ -64,7 +64,76 @@ button:hover {
   background-color: bisque;
 }
 
+.overlay,
+.overlay2 {
+  height: 50%;
+  width: 50%;
+  margin: 4rem 26rem;
+  position: fixed;
+  background-color: rgba(243, 238, 238, 0.8);
+  border-radius: 5rem;
+}
+
+.hidden {
+  display: none;
+}
+
 td,
 th {
   border: 0.5px solid black;
+}
+
+.close {
+  background: #cdd4dd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.input {
+  width: 15%;
+  padding: 1%;
+  font-size: 120%;
+  border: 5px solid rgb(83, 83, 83);
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
+.input2,
+.dropDown {
+  width: 23%;
+  padding: 1%;
+  font-size: 120%;
+  border: 5px solid rgb(83, 83, 83);
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
+.addButton {
+  display: flex;
+  width: 20%;
+  padding: 2%;
+  font-size: 200%;
+  border: 5px solid rgb(83, 83, 83);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3rem 17rem;
+  cursor: pointer;
+}
+
+.addUser {
+  display: flex;
+  width: 20%;
+  padding: 2%;
+  font-size: 200%;
+  border: 5px solid rgb(83, 83, 83);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 3rem 17rem;
+  cursor: pointer;
 }

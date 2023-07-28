@@ -42,7 +42,8 @@ let login = function (db, cred, res) {
                 const token = jwt.sign({
                     user_id: user[0].Id,
                     username: user[0].Username,
-                    Email
+                    Email,
+                    userType: user[0].Type
                 },
                     `${process.env.TOKEN_KEY}`,
                     {
@@ -54,7 +55,7 @@ let login = function (db, cred, res) {
 
             } else {
                 console.log('no mtch');
-                return res.status(400).send("No Match")
+                return res.status(400).send({ err: "No Match" })
             }
 
             return res.status(200).send(user)

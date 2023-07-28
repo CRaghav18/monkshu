@@ -2,6 +2,8 @@
 
 const text = document.querySelector('.text1')
 
+let token = localStorage.getItem('token')
+
 export const addBook = function () {
 
     let data = {}
@@ -20,7 +22,8 @@ export const addBook = function () {
     fetch('http://localhost:3000/addBook', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(data)
     }

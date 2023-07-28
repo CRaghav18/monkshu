@@ -1,12 +1,14 @@
 import { buildTable } from './table.js';
 
+let token = localStorage.getItem('token')
 
 
 export const getBooks = function () {
 
   document.querySelector('.table').style.visibility = 'visible'
-
   document.querySelector('.overlay').style.display = 'none'
+  document.querySelector('.overlay2').style.display = 'none'
+
 
 
   let data = {}
@@ -16,7 +18,9 @@ export const getBooks = function () {
   fetch('http://localhost:3000/getBooks', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+
     },
     body: JSON.stringify(data)
   }

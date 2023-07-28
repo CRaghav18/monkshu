@@ -1,3 +1,6 @@
+'use strict'
+
+let token = localStorage.getItem('token')
 
 const removeBook = function (isbn) {
 
@@ -9,7 +12,9 @@ const removeBook = function (isbn) {
     fetch('http://localhost:3000/removeBook', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+
         },
         body: JSON.stringify(data)
     }
