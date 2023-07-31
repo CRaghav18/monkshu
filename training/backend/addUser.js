@@ -7,11 +7,11 @@ let addUser = function (db, req, res) {
     const result = validateUser(req);
 
     if (!result.err) {
-        let query = `INSERT INTO Users (Type, Username, Email, password) VALUES ('${req.body.type}', '${req.body.userName}', '${req.body.email}', '${req.body.pass}');`
+        let query = `INSERT INTO Users (Type, Username, Email, password, DateCreated) VALUES ('${req.body.type}', '${req.body.userName}', '${req.body.email}', '${req.body.pass}', '${Date('now')}');`
 
         db.all(query, function (err, data) {
             if (err) {
-                res.send({ err: "Email Exists" });
+                res.send({ err: err.message });
             } else {
                 res.send(data)
             }

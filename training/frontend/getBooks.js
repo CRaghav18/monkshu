@@ -29,9 +29,9 @@ export const getBooks = function () {
 
       let bookData = await data.json()
 
-      console.log('Working');
 
       buildTable(bookData)
+
 
     }).catch(async (err) => {
 

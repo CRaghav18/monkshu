@@ -26,14 +26,17 @@
 }
 
 .name {
-  margin-left: 54px;
+  color: rgb(206, 240, 253);
+  font-size: 40px;
+  margin-left: 65px;
+  margin-top: 10px;
 }
 
 .post {
   color: rgb(206, 240, 253);
-  font-size: 16px;
-  margin-left: 79px;
-  margin-top: -16px;
+  font-size: 25px;
+  margin-left: 65px;
+  margin-top: -18px;
 }
 .button {
   display: block;

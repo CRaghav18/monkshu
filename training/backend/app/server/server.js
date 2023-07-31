@@ -4,7 +4,6 @@ import express from 'express'
 import sqlite3 from 'sqlite3'
 import cors from "cors";
 import dotenv from 'dotenv'
-// import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import jwtAuth from '../../../middleware.js'
 import testing from '../../signUp.js'
@@ -15,6 +14,7 @@ import addBook from '../../addBook.js'
 import removeBook from '../../removeBook.js'
 import addUser from '../../addUser.js';
 import removeUser from '../../removeUser.js';
+import borrow from '../../borrow.js'
 
 
 dotenv.config()
@@ -52,6 +52,10 @@ app.post('/login', (req, res) => {
 
 app.post('/getBooks', jwtAuth, (req, res) => {
     getBooks(db, res)
+})
+
+app.post('/borrow', jwtAuth, (req, res) => {
+    borrow(db, req, res)
 })
 
 app.post('/getUser', jwtAuth, (req, res) => {

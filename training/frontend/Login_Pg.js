@@ -35,39 +35,39 @@ let hide = function () {
 }
 
 
-let submit = function () {
+// let submit = function () {
 
 
-    if (pass.value === '') {
-        h.textContent = "Enter Password"
-        h.style.color = "red";
-    } else if (pass.value !== confPass.value) {
-        h.textContent = 'password not matched'
-        h.style.color = 'red'
+//     if (pass.value === '') {
+//         h.textContent = "Enter Password"
+//         h.style.color = "red";
+//     } else if (pass.value !== confPass.value) {
+//         h.textContent = 'password not matched'
+//         h.style.color = 'red'
 
-    } else if (pass.value === confPass.value) {
-        h.textContent = ''
+//     } else if (pass.value === confPass.value) {
+//         h.textContent = ''
 
-    }
+//     }
 
-    data.userName = userName.value
-    data.gmail = gmail.value
-    data.pass = pass.value
+//     data.userName = userName.value
+//     data.gmail = gmail.value
+//     data.pass = pass.value
 
 
 
-    fetch('http://localhost:3000/SignUp', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    }
-    )
-        .then()
-        .catch()
+//     fetch('http://localhost:3000/SignUp', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data)
+//     }
+//     )
+//         .then()
+//         .catch()
 
-}
+// }
 
 let login = function () {
 
@@ -86,13 +86,16 @@ let login = function () {
 
             let data = await user.json();
 
-            console.log(data);
             if (!data.err) {
                 let token = data[0].Token
                 let type = data[0].Type
+                let Username = data[0].Username
+
+                console.log(data[0]);
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('type', type)
+                localStorage.setItem('Username', Username)
 
                 if (logpass.value === '') {
                     h.textContent = "Enter Password"

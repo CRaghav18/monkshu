@@ -8,8 +8,7 @@ const jwtAuth = (req, res, next) => {
     return res.status(401).json({ error: 'No Token Provided' });
   }
 
-  const token = authHeader.split(' ')[1]; // Extract the token part after 'Bearer'
-
+  const token = authHeader.split(' ')[1];
 
   if (token == null) return res.sendStatus(401).json({ err: 'No Token Provided' })
 
@@ -24,17 +23,17 @@ const jwtAuth = (req, res, next) => {
 
     if (type == "Admin" && route == '/addBook') {
 
-      return res.status(400).json({ error: 'THATS NOT YOUR WORK' });
+      return res.status(400).json({ err: 'THATS NOT YOUR WORK' });
     }
 
     if (type == "Librarian" && route == '/addUser' && req.body.type == 'Librarian') {
 
-      return res.status(400).json({ error: "YOU CAN'T ADD A LIBRARIAN" });
+      return res.status(400).json({ err: "YOU CAN'T ADD A LIBRARIAN" });
     }
 
-    if (type == 'Member' && route !== '/getBooks') {
+    if (type == 'Member' && route !== '/getBooks' && route !== '/borrow') {
 
-      return res.status(400).json({ error: "YOU ARE NOT AUTHORIZED FOR THAT" })
+      return res.status(400).json({ err: "YOU ARE NOT AUTHORIZED FOR THAT" })
 
     }
 

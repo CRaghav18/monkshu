@@ -3,16 +3,24 @@
 import sqlite3 from 'sqlite3'
 
 
-const db = new sqlite3.Database('./app/db/test.db',(err) =>{
+const db = new sqlite3.Database('./app/db/test.db', (err) => {
 
-    if (err){
+    if (err) {
         return console.error(err.message)
     }
     else {
         console.log('Database working');
     }
-    
-    })
+
+})
+
+// db.run(`ALTER TABLE Books ADD COLUMN AddedDate DATE`, [], (err) => {
+//     if (err) {
+//         console.error('Error adding the AddedDate column:', err.message);
+//     } else {
+//         console.log('AddedDate column added successfully.');
+//     }
+// });
 
 
 
