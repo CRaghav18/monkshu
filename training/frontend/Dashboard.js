@@ -2,7 +2,12 @@
 
 let overlay = document.querySelector('.overlay');
 let overlay2 = document.querySelector('.overlay2');
-let removeBook = document.querySelector('.table');
+let hideBook = document.querySelector('.table');
+let removeMyBook = document.querySelector('.books');
+
+let getBooksBtn = document.getElementById('getBooks')
+
+let myBooksBtn = document.getElementById('myBooks')
 
 let userName = document.querySelector('.name')
 let post = document.querySelector('.post')
@@ -21,25 +26,27 @@ function info() {
 function addU() {
 
     overlay2.style.display = 'block';
-    removeBook.style.visibility = 'hidden';
+    hideBook.style.visibility = 'hidden';
     overlay.style.display = 'none';
 
 }
 
 function hide() {
-    removeBook.style.visibility = 'hidden';
+    hideBook.style.visibility = 'hidden';
     overlay.style.display = 'none';
     overlay2.style.display = 'none';
 }
 
 function hide2() {
-    removeBook.style.visibility = 'hidden';
+    hideBook.style.visibility = 'hidden';
     overlay.style.display = 'none';
     overlay2.style.display = 'none';
 }
 
 function home() {
-    removeBook.style.visibility = 'hidden';
+    hideBook.style.visibility = 'hidden';
+    removeMyBook.style.visibility = 'hidden';
+
     overlay.style.display = 'none';
     overlay2.style.display = 'none';
 
@@ -48,10 +55,28 @@ function home() {
 function addB() {
     overlay.style.display = 'block';
     overlay2.style.display = 'none';
-    removeBook.style.visibility = 'hidden';
+    hideBook.style.visibility = 'hidden';
+    removeMyBook.style.visibility = 'hidden';
+
 
 
 }
+
+function getbooks() {
+
+    hideBook.style.display = 'table'
+    removeMyBook.style.display = 'none'
+
+}
+
+function myBooks() {
+
+    hideBook.style.display = 'none'
+    removeMyBook.style.display = 'table'
+
+}
+
+
 
 function logOut() {
     window.location.href = 'http://127.0.0.1:5500/training/frontend/Login_Pg.html';
@@ -68,6 +93,8 @@ if (type == 'Admin') {
     document.getElementById('hide2').addEventListener('click', hide2);
     document.getElementById('myBooks').style.display = 'none'
     document.getElementById('addB').style.display = 'none'
+    myBooksBtn.style.display = 'none'
+
 
 
 
@@ -81,7 +108,8 @@ if (type == 'Admin') {
     document.getElementById('hide').addEventListener('click', hide);
     document.getElementById('hide2').addEventListener('click', hide2);
     document.getElementById('addB').addEventListener('click', addB);
-    document.getElementById('myBooks').style.display = 'none'
+    myBooksBtn.style.display = 'none'
+
 
 
 } else if (type == 'Member') {
@@ -93,6 +121,8 @@ if (type == 'Admin') {
     document.getElementById('addU').style.display = 'none'
     document.getElementById('addB').style.display = 'none'
     document.getElementById('getUser').style.display = 'none'
+    getBooksBtn.addEventListener('click', getbooks)
+    myBooksBtn.addEventListener('click', myBooks)
 
 } else {
 

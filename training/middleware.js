@@ -31,7 +31,7 @@ const jwtAuth = (req, res, next) => {
       return res.status(400).json({ err: "YOU CAN'T ADD A LIBRARIAN" });
     }
 
-    if (type == 'Member' && route !== '/getBooks' && route !== '/borrow') {
+    if (type == 'Member' && route == '/getUser' && route == '/addBook' && route == '/removeBook' && route == '/addUser' && route == '/removeUser') {
 
       return res.status(400).json({ err: "YOU ARE NOT AUTHORIZED FOR THAT" })
 

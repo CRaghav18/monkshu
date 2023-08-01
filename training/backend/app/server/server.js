@@ -15,6 +15,8 @@ import removeBook from '../../removeBook.js'
 import addUser from '../../addUser.js';
 import removeUser from '../../removeUser.js';
 import borrow from '../../borrow.js'
+import bookReturn from '../../bookReturn.js';
+import myBooks from '../../myBooks.js';
 
 
 dotenv.config()
@@ -54,8 +56,17 @@ app.post('/getBooks', jwtAuth, (req, res) => {
     getBooks(db, res)
 })
 
+
+app.post('/myBooks', jwtAuth, (req, res) => {
+    myBooks(db, req, res)
+})
+
 app.post('/borrow', jwtAuth, (req, res) => {
     borrow(db, req, res)
+})
+
+app.post('/bookReturn', jwtAuth, (req, res) => {
+    bookReturn(db, req, res)
 })
 
 app.post('/getUser', jwtAuth, (req, res) => {

@@ -3,7 +3,7 @@
 
 let token = localStorage.getItem('token')
 
-const borrow = function (isbn, bookName) {
+const bookReturn = function (isbn, bookName) {
 
     let data = {}
 
@@ -13,7 +13,7 @@ const borrow = function (isbn, bookName) {
     data.UserName = localStorage.getItem('Username')
 
 
-    fetch('http://localhost:3000/borrow', {
+    fetch('http://localhost:3000/bookReturn', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -35,11 +35,7 @@ const borrow = function (isbn, bookName) {
             } else {
                 alert(result.message);
             }
-            const book = document.getElementById(isbn);
-            if (book) {
-                console.log('Book has been added');
-                ;
-            }
+
 
         }).catch(async (err) => {
 
@@ -49,4 +45,4 @@ const borrow = function (isbn, bookName) {
 };
 
 
-export default borrow
+export default bookReturn

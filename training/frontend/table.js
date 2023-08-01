@@ -23,7 +23,8 @@ export const buildTable = (data) => {
 						<th> ${"Row No."}</th>
 						<th> ${"Availability"}</th>
 						${type !== "Member" ? '<th><i class="fa-solid fa-trash"></i></th>' : ''}
-						${type == "Member" ? '<th><i class="fa-solid fa-plus"></i>}</th>' : ''}
+						${type == "Member" ? '<th><i class="fa-solid fa-plus"></i></th>' : ''}
+
 						<th>${"Next Available"}</th>   
 `
 
