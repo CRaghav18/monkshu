@@ -30,7 +30,7 @@
     "natural": "^6.5.0",
     "nodemailer": "latest",
     "sqlite": "^4.2.1",
-    "sqlite3": "latest",
+    "sqlite3": "^5.1.6",
     "terser": "latest",
     "uglify-js": "latest"
   },
