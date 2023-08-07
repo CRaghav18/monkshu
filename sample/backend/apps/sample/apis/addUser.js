@@ -1,32 +1,57 @@
-'use strict'
+const db = require("./db.js")
+const API_CONSTANTS = require('./lib/constants.js');
 
-let addUser = function (db, req, res) {
+exports.doService = async jsonReq => {
 
+    try {
+        const message = await addUser(jsonReq);
+        console.log(message);
+        if (message.err) return { result: false, err: message.err }
+        return { result: true, message };
 
+    } catch (error) {
+        console.error('ERRRRR', error);
+        return API_CONSTANTS.API_RESPONSE_SERVER_ERROR;
+    }
+}
 
-    const result = validateUser(req);
+let addUser = async (req) => {
 
-    if (!result.err) {
-        let query = `INSERT INTO Users (Type, Username, Email, password, DateCreated) VALUES ('${req.body.type}', '${req.body.userName}', '${req.body.email}', '${req.body.pass}', '${Date('now')}');`
+    try {
 
-        db.all(query, function (err, data) {
-            if (err) {
-                res.send({ err: err.message });
+        const validate = validateUser(req);
+
+        if (!validate.err) {
+            let query = `INSERT INTO Users (Role, Username, Email, password, DateCreated) VALUES ('${req.type}', '${req.userName}', '${req.email}', '${req.pass}', '${Date('now')}');`
+
+            result = await db.runQuery(query, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+
+            console.log(result);
+
+            if (result) {
+
+                return { data: result }
+
             } else {
-                res.send(data)
+                console.log({ err: err.message });
+                return { err: err.message };
             }
-        })
-    } else {
-
-        res.send(result.err)
+        } else {
+            console.log('validation error');
+            console.log(JSON.stringify(validate.err));
+            return validate.err;
+        }
+    } catch (e) {
+        console.log(e);
+        return { err: e };
     }
 }
 
 const validateUser = (req) => {
     const result = {}
-    const email = req.body.email
-    const pass = req.body.pass
-    const username = req.body.userName
+    const email = req.email
+    const pass = req.pass
+    const username = req.userName
 
 
     if (!username || username.length < 4 || username.length > 10) {
@@ -47,4 +72,3 @@ const validateUser = (req) => {
     return result;
 }
 
-export default addUser

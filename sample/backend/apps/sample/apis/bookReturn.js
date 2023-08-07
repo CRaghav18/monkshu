@@ -1,7 +1,25 @@
-let bookReturn = function (db, req, res) {
-    delete req.body.token;
-    let isbn = req.body.isbn;
-    let bookName = req.body.bookName
+const db = require("./db.js")
+const API_CONSTANTS = require('./lib/constants.js');
+
+exports.doService = async jsonReq => {
+
+    try {
+        const message = await bookReturn(jsonReq);
+        console.log(message);
+        if (message.err) return API_CONSTANTS.API_RESPONSE_FALSE;
+        return { result: true, message };
+
+    } catch (error) {
+        console.error('ERRRRR', error);
+        return API_CONSTANTS.API_RESPONSE_SERVER_ERROR;
+    }
+}
+
+let bookReturn = (req) => {
+
+    delete req.token;
+    let isbn = req.isbn;
+    let bookName = req.bookName
 
     let checkquery = "SELECT Availability FROM Books WHERE ISBN = ?";
 
@@ -26,13 +44,12 @@ let bookReturn = function (db, req, res) {
                 let query = "UPDATE Books SET Availability = 1, Date = Date('now') WHERE ISBN = ?";
 
                 let query2 = "INSERT INTO Transactions (UserName, BookName, ISBN) VALUES (?, ?, ?)";
-                let values2 = [req.body.UserName, bookName, isbn];
+                let values2 = [req.UserName, bookName, isbn];
 
                 let query3 = "DELETE FROM myBooks WHERE UserName = ?";
-                let values3 = [req.body.UserName];
+                let values3 = [req.UserName];
 
                 db.run(query, [isbn], function (err, data) {
-
 
                     if (err) {
 
@@ -61,7 +78,4 @@ let bookReturn = function (db, req, res) {
             }
         }
     });
-};
-
-
-export default bookReturn;
+}

@@ -1,4 +1,13 @@
 {
-  "/apis/login": "/apis/login.js",
-  "/apis/random": "/apis/random.js?get=true&key=Mk6DAu4beAzqD6I63Z1jRgQ5WTDa6zQO&needsToken=true"
+  "/apis/login": "/apis/login.js?needsToken=false&addsToken=sub:{{{Role}}},flag:{{{result}}},id:{{{id}}}id:{{{id}}},UserName:{{{UserName}}},Email:{{{Email}}}",
+  "/apis/getBooks": "/apis/getBooks.js?needsToken=true",
+  "/apis/getUser": "/apis/getUser?needsToken=true",
+  "/apis/addBook": "/apis/addBook?needsToken=true",
+  "/apis/addUser": "/apis/addUser?needsToken=true",
+  "/apis/bookReturn": "/apis/bookReturn?needsToken=true",
+  "/apis/borrow": "/apis/borrow?needsToken=true",
+  "/apis/createLogin": "/apis/createLogin?needsToken=true",
+  "/apis/myBooks": "/apis/myBooks?needsToken=true",
+  "/apis/removeBook": "/apis/removeBook?needsToken=true",
+  "/apis/removeUser": "/apis/removeUser?needsToken=true"
 }

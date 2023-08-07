@@ -1,37 +1,51 @@
 
-let getUser = function (db, req, res) {
+const db = require("./db.js")
+const API_CONSTANTS = require('./lib/constants.js');
 
+exports.doService = async jsonReq => {
 
-    let query1 = "SELECT * FROM Users";
-    let query2 = `SELECT * FROM Users WHERE TYPE = "Member" `
+    try {
+        const message = await getUser(jsonReq);
+        console.log(message);
+        if (message.err) return API_CONSTANTS.API_RESPONSE_FALSE;
+        return { result: true, message };
 
-
-    if (req.body.type === 'Librarian') {
-        db.all(query2, function (err, data) {
-
-            if (err) {
-                console.log(err.message);
-            } else {
-
-                res.send(data)
-            }
-
-
-        })
-    } else {
-        db.all(query1, function (err, data) {
-
-            if (err) {
-                console.log(err.message);
-            } else {
-
-                res.send(data)
-            }
-
-
-        })
+    } catch (error) {
+        console.error('ERRRRR', error);
+        return API_CONSTANTS.API_RESPONSE_SERVER_ERROR;
     }
-
 }
 
-export default getUser
+let getUser = async (jsonReq) => {
+
+    console.log(jsonReq);
+
+    let query1 = "SELECT * FROM Users";
+    let query2 = `SELECT * FROM Users WHERE Role = "Member" `
+
+    try {
+        let result;
+
+        if (jsonReq.type === 'Librarian') {
+
+            result = await db.getAllQuery(query2, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+        } else {
+
+            result = await db.getAllQuery(query1, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+        }
+
+        if (result.rows || result.rows.length >= 0) {
+
+            return { data: result.rows }
+
+        } else {
+            console.log({ err: err.message });
+            return { err: err.message };
+
+        }
+    } catch (e) {
+        console.log(e);
+        return { err: e };
+
+    }
+}

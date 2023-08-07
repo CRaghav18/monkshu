@@ -10,7 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "latest",
-    "sqlite": "^4.2.1",
-    "sqlite3": "^5.1.6"
+    "clean-css": "latest",
+    "html-minifier": "latest",
+    "mustache": "latest",
+    "natural": "^6.5.0",
+    "nodemailer": "latest",
+    "sqlite3": "latest",
+    "terser": "latest",
+    "uglify-js": "latest"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
   }
 }

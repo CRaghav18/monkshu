@@ -1,24 +1,38 @@
-let removeUser = function (db, req, res) {
+const db = require("./db.js")
+const API_CONSTANTS = require('./lib/constants.js');
 
-    delete req.body.token
-    let userName = req.body.userName
+exports.doService = async jsonReq => {
 
-    console.log(userName);
+    try {
+        const message = await removeUser(jsonReq);
+        console.log(message);
+        if (message.err) return { result: false, err: message.err }
+        return { result: true, message };
+
+    } catch (error) {
+        console.error('ERRRRR', error);
+        return API_CONSTANTS.API_RESPONSE_SERVER_ERROR;
+    }
+}
+
+let removeUser = async (req) => {
+
+    delete req.token
+
+    let userName = req.userName
 
     let query = "DELETE FROM Users WHERE Username = ?";
 
-    db.run(query, [userName], function (err, data) {
+    result = await db.runQuery(query, [userName], API_CONSTANTS.APP_ROOT + '/db/library.db');
 
-        if (err) {
-            console.log(err.message);
-        } else {
+    console.log(result);
 
-            res.send(data)
-        }
+    if (result) {
 
+        return { data: result }
 
-    })
-
+    } else {
+        console.log({ err: err.message });
+        return { err: err.message };
+    }
 }
-
-export default removeUser
