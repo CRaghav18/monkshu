@@ -20,7 +20,7 @@ let getBooks = async () => {
 
     try {
 
-        let query = "SELECT * FROM Books";
+        let query = "SELECT Books.*, Authors.Name AS Author FROM Books INNER JOIN Authors ON Books.ID = Authors.ID";
 
         const result = await db.getAllQuery(query, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
 

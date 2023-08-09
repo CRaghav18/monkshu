@@ -24,17 +24,25 @@ export const getUser = function () {
     body: JSON.stringify(data)
   }
   )
-    .then(async (data) => {
+    .then(async (response) => {
 
-      let userData = await data.json()
+      let result = await response.json()
 
-      buildTable(userData)
+      if (result.result) {
+        let UserData = result.message.data
+        console.log(UserData);
+        buildTable(UserData)
+
+      } else {
+        console.log('Table is empty');
+      }
 
     }).catch(async (err) => {
 
       console.log(err.message);
 
     })
+
 };
 
 document.getElementById("getUser").addEventListener("click", getUser);

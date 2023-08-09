@@ -26,11 +26,16 @@ export const addUser = function () {
         body: JSON.stringify(data)
     }
     )
-        .then(async (data) => {
-            const newData = await data.json()
-            console.log(newData);
-            showError(newData.err)
+        .then(async (response) => {
 
+            let result = await response.json()
+
+            if (result.result) {
+                alert('User Added Successfully');
+                window.location.reload();
+            } else {
+                showError(result.err)
+            }
         }).catch(async (err) => {
 
             showError(await err)

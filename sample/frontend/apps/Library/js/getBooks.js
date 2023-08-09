@@ -19,19 +19,25 @@ export const getBooks = function () {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'authorization': `Bearer ${token}`
 
     },
     body: JSON.stringify(data)
   }
   )
-    .then(async (data) => {
+    .then(async (response) => {
 
-      let bookData = await data.json()
+      let result = await response.json()
 
+      if (result.result) {
 
-      buildTable(bookData)
+        let bookData = result.message.data
+        console.log(bookData);
+        buildTable(bookData)
 
+      } else {
+        console.log('Table is empty');
+      }
 
     }).catch(async (err) => {
 

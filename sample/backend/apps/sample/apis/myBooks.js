@@ -1,22 +1,46 @@
+const db = require("./db.js")
+const API_CONSTANTS = require('./lib/constants.js');
 
-let myBooks = function (db, req, res) {
+exports.doService = async jsonReq => {
 
-    let UserName = req.body.UserName;
+    try {
+        const message = await myBooks(jsonReq);
+        console.log(message);
+        if (message.err) return { result: false, err: message.err }
+        return { result: true, message };
 
-    let query = "SELECT * FROM myBooks WHERE UserName = ?";
-
-    db.all(query, [UserName], function (err, data) {
-
-        if (err) {
-            console.log(err.message);
-        } else {
-
-            res.send(data)
-        }
-
-
-    })
+    } catch (error) {
+        console.error('ERRRRR', error);
+        return API_CONSTANTS.API_RESPONSE_SERVER_ERROR;
+    }
 
 }
 
-export default myBooks
+let myBooks = async (req) => {
+
+    let UserName = req.UserName
+
+    try {
+
+        let query = "SELECT Transactions.*, Users.ID, Books.*, Authors.* FROM Transactions INNER JOIN Users ON Users.ID = Transactions.User_ID INNER JOIN Books ON Books.ID = Transactions.Book_ID INNER JOIN Authors ON Authors.ID = Books.ID WHERE UserName = ?"
+
+        const result = await db.getAllQuery(query, [UserName], API_CONSTANTS.APP_ROOT + '/db/library.db');
+
+        console.log(JSON.stringify(result));
+
+        if (result.rows || result.rows.length >= 0) {
+
+            return { data: result.rows }
+
+        } else {
+            console.log({ err: err.message });
+            return { err: err.message };
+
+        }
+    } catch (e) {
+        console.log(e);
+        return { err: e };
+
+    }
+
+};

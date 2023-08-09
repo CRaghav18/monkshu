@@ -1,5 +1,6 @@
 'use strict';
 
+let Backend_URL = 'http://localhost:9090/apis'
 let overlay = document.querySelector('.overlay');
 let overlay2 = document.querySelector('.overlay2');
 let hideBook = document.querySelector('.table');
@@ -19,7 +20,7 @@ let type = localStorage.getItem('type');
 function info() {
 
     userName.innerHTML = Username
-    post.innerHTML = type
+    post.innerHTML = type;
 }
 
 
@@ -79,7 +80,8 @@ function myBooks() {
 
 
 function logOut() {
-    window.location.href = 'http://127.0.0.1:5500/training/frontend/Login_Pg.html';
+    localStorage.clear();
+    window.location.href = 'http://127.0.0.1:8080/apps/Library/index.html';
 }
 
 

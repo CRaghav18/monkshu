@@ -22,40 +22,66 @@ let addBook = async (req) => {
 
         if (!validate.err) {
 
-            let query = `INSERT INTO Books (Title, ISBN, Access_No, Price, Shelf_No, Row_No, Availability) VALUES('${req.title}', ${req.ISBN}, ${req.access}, ${req.price}, ${req.shelf}, ${req.row}, ${true});`
+            let query = `INSERT INTO Books (Title, ISBN, Access_No, Price, Shelf_No, Row_No, Availability) 
+            VALUES('${req.title}', '${req.ISBN}', '${req.access}', ${req.price}, '${req.shelf}', '${req.row}', ${true});`
 
-            let query2 = `INSERT INTO Authors (Name) VALUES('${req.author}')`
+            let query2 = `INSERT INTO Authors (Name) 
+            VALUES('${req.author}')`
 
-            result = await db.runQuery(query, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+            let query3 = `INSERT INTO Author_Book (Author_ID, Book_ID)
+                            VALUES (?,?);`
 
-            console.log('query1 executed');
+            const result = await db.runQuery(query, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+            console.log('----------RESULT--------');
+            console.log(JSON.stringify(result));
 
-            if (result) {
+            const bookId = result.lastID;
+            console.log('Book Added Successfully');
+            console.log('----book id-----');
+            console.log(bookId);
+
+            if (!result.err) {
 
                 console.log(result);
 
-                result2 = await db.runQuery(query2, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
 
-                console.log('query2 executed');
+                const result2 = await db.runQuery(query2, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
+                console.log('++++++++++++++++++++++++');
+                console.log(JSON.stringify(result2));
+                const authorId = result2.lastID;
+                console.log('____________________');
 
-                if (result2) {
+                console.log(authorId);
 
-                    return { data: result.rows }
+                console.log('Author Added Successfully');
+
+                if (!result2.err) {
+
+                    const result3 = await db.runQuery(query3, [authorId, bookId], API_CONSTANTS.APP_ROOT + '/db/library.db');
+                    console.log('RESULT3');
+                    console.log(JSON.stringify(result3));
+
+                    if (!result3.err) {
+                        console.log('Author_Book Updated successfully.');
+                        return { data: result.rows }
+                    } else {
+                        console.log({
+                            err: "Failed to Update Author_Book"
+                        });
+                        return { err: "Failed to Update Author_Book" };
+                    }
 
                 } else {
-                    console.log({ err: err.message });
-                    return { err: err.message };
+                    console.log({ err: "Failed to insert Author" });
+                    return { err: "Failed to insert Author" };
                 }
 
-
             } else {
-                console.log('def');
-                console.log({ err: err.message });
-                return { err: err.message };
-
+                console.log({ err: "Failed to insert Book" });
+                return { err: "Failed to insert Book" };
             }
         } else {
-            console.log('validation error');
+            console.log('Validation error');
             console.log(JSON.stringify(validate.err));
             return validate.err;
         }

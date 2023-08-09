@@ -6,7 +6,6 @@
   "/apis/addUser": "/apis/addUser?needsToken=true",
   "/apis/bookReturn": "/apis/bookReturn?needsToken=true",
   "/apis/borrow": "/apis/borrow?needsToken=true",
-  "/apis/createLogin": "/apis/createLogin?needsToken=true",
   "/apis/myBooks": "/apis/myBooks?needsToken=true",
   "/apis/removeBook": "/apis/removeBook?needsToken=true",
   "/apis/removeUser": "/apis/removeUser?needsToken=true"

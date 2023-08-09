@@ -8,7 +8,7 @@ export const addBook = function () {
 
     let data = {}
 
-    data.name = document.getElementById('name').value;
+    data.title = document.getElementById('name').value;
     data.author = document.getElementById('author').value
     data.ISBN = document.getElementById('ISBN').value
     data.access = document.getElementById('access').value
@@ -28,15 +28,21 @@ export const addBook = function () {
         body: JSON.stringify(data)
     }
     )
-        .then(async (data) => {
-            const newData = await data.json()
-            console.log(newData);
-            showError(newData.err)
+        .then(async (response) => {
 
+            let result = await response.json()
+
+            console.log(result);
+
+            if (result.result) {
+                alert('Book Added Successfully');
+                window.location.reload();
+            } else {
+                showError(result.err)
+            }
         }).catch(async (err) => {
 
-            console.log(err.message);
-
+            showError(await err)
         })
 };
 
