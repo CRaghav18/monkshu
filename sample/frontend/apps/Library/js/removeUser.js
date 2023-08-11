@@ -19,22 +19,19 @@ const removeUser = function (userName) {
         body: JSON.stringify(data)
     }
     )
-        .then(async (data) => {
+        .then(async (response) => {
 
-            if (data) {
+            let result = await response.json()
 
-                const userRow = document.getElementById(userName);
-                if (userRow) {
-                    userRow.remove();
-                }
-                console.log('User has been deleted');
-
-            } else { console.log('there was some error'); }
-
+            if (result.result) {
+                alert('User Deleted Successfully');
+                window.location.reload();
+            } else {
+                showError('There is some error')
+            }
         }).catch(async (err) => {
 
-            console.log(err.message);
-
+            showError(await err)
         })
 };
 

@@ -11,11 +11,11 @@ export const buildTable = (data) => {
 						<th> ${"<i class='fa-solid fa-trash'></i>"}</th>`
 	for (var i = 0; i < data.length; i++) {
 		var row = `<tr>
-      				<td>${data[i].Type}</td>
-      				<td>${data[i].Id}</td>
-      				<td>${data[i].Username}</td>
+      				<td>${data[i].Role}</td>
+      				<td>${data[i].ID}</td>
+      				<td>${data[i].UserName}</td>
       				<td>${data[i].Email}</td>
-					<td><button id="${data[i].Username}" class="removeBtn" >Remove</button></td>
+					<td><button id="${data[i].UserName}" class="removeBtn" >Remove</button></td>
 
       				              
               </tr>`

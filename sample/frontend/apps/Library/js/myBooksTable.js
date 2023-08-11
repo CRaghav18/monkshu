@@ -2,29 +2,33 @@ import bookReturn from "./bookReturn.js";
 
 
 export const myBooksTable = (data) => {
-    let type = localStorage.getItem('type');
+
+    let info = data.message.data
+
+    console.log(info);
 
 
     var table = document.getElementsByClassName('myBooks')[0];
     let initialRow = `<tr><td></td></tr>`
     table.innerHTML = initialRow
 
-    table.innerHTML = ` <th> ${"User Name"}</th>
-						<th> ${"Book Name"}</th>
-						<th> ${"ISBN"}</th>
-						${type == "Member" ? '<th><i class="fa-solid fa-right-left"></i></th>' : ''}
+    table.innerHTML = ` <th> ${"Title"}</th>
+                        <th> ${"Author"}</th>
+                        <th> ${"ISBN"}</th>
+						<th> ${"Borrow Date"}</th>
+						<th><i class="fa-solid fa-right-left"></i></th>' 
 `
 
 
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < info.length; i++) {
 
         var row = `
 				<tr>
-      				<td>${data[i].UserName}</td> 
-      				<td>${data[i].BookName}</td>
-      				<td>${data[i].ISBN}</td>			
-					${type == "Member" ? `<td >  <button data-book-name = "${data[i].BookName}" id="${data[i].ISBN}" class="bookReturn">Return</ button>
-					</td> ` : ''}
+      				<td>${info[i].Title}</td>
+                    <td>${info[i].Name}</td>
+                    <td>${info[i].ISBN}</td> 
+      				<td>${info[i].Borrow_Date}</td>
+					${`<td >  <button data-book-name = "${info[i].Title}" id="${info[i].ISBN}" class="bookReturn">Return</ button> </td> `}
 
               </tr> `
         table.innerHTML += row

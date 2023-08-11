@@ -3,6 +3,7 @@ const API_CONSTANTS = require('./lib/constants.js');
 
 exports.doService = async jsonReq => {
 
+    //    console.log(jsonReq.header);
     try {
         const message = await addUser(jsonReq);
         console.log(message);
@@ -26,15 +27,26 @@ let addUser = async (req) => {
 
             result = await db.runQuery(query, [], API_CONSTANTS.APP_ROOT + '/db/library.db');
 
-            console.log(result);
+            console.log('---------------------------');
+            console.log(JSON.stringify(result));
 
-            if (result) {
+            if (!result.err && !result.error) {
 
                 return { data: result }
 
             } else {
-                console.log({ err: err.message });
-                return { err: err.message };
+                let err;
+                if (result.error)
+                    err = result.error.code
+                else
+                    err = result.err.message;
+
+                if (err == "SQLITE_CONSTRAINT")
+                    err = "Username and Email must be unique";
+
+                console.log('-======----=========----');
+                console.log({ err: err });
+                return { err: err };
             }
         } else {
             console.log('validation error');
@@ -52,7 +64,13 @@ const validateUser = (req) => {
     const email = req.email
     const pass = req.pass
     const username = req.userName
+    const type = req.type;
+    const userType = req.UserType;
 
+    if (userType == type) {
+        result.err = { err: "You can't add user on same level" }
+        return result;
+    }
 
     if (!username || username.length < 4 || username.length > 10) {
         result.err = { err: "UserName must contain 4-10 Characters" };

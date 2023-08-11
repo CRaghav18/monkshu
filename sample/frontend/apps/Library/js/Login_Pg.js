@@ -1,5 +1,6 @@
 'use strict'
 
+let Backend_URL = 'http://localhost:9090/apis'
 let overlay = document.querySelector('.overlay')
 let overlay2 = document.querySelector('.overlay2')
 let userName = document.querySelector('#userName')
@@ -73,47 +74,53 @@ let login = function () {
     cred.mail = logmail.value
     cred.pass = logpass.value
 
+    if (logpass.value === '') {
+        h.textContent = "Enter Password"
+        h.style.color = "red";
+        return;
+    } else {
+        h.textContent = '';
+    }
+
+
     fetch(Backend_URL + '/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(cred)
-    }
-    )
-        .then(async (user) => {
 
-            let data = await user.json();
+    }).then(async (response) => {
 
-            if (!data.err) {
-                let token = data[0].Token
-                let type = data[0].Type
-                let Username = data[0].Username
+        const accessToken = response.headers.get('Access_token');
+        let result = await response.json();
 
-                console.log(data[0]);
+        if (accessToken && result) {
+
+            let data = result.message.user;
+            if (data) {
+                let token = accessToken;
+                let type = data.Role
+                let Username = data.UserName
+
+                console.log(data);
+                console.log(token);
+                console.log(type);
+                console.log(Username);
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('type', type)
                 localStorage.setItem('Username', Username)
 
-                if (logpass.value === '') {
-                    h.textContent = "Enter Password"
-                    h.style.color = "red";
+                window.location.href = 'http://127.0.0.1:8080/apps/Library/Dashboard.html'
 
-                } else {
-                    h.textContent = '';
-                }
-
-                if (data[0]) {
-                    window.location.href = 'http://127.0.0.1:5500/training/frontend/Dashboard.html'
-
-                } else { console.log('not working'); }
-            } else {
-                showError(data.err);
-            }
-        })
+            } else { console.log('not working'); }
+        } else {
+            showError(result.message);
+        }
+    })
         .catch((error) => {
-            showError(error.message);
+            showError(error);
         });
 };
 

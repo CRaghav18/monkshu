@@ -15,6 +15,8 @@ export const addBook = function () {
     data.price = document.getElementById('price').value
     data.shelf = document.getElementById('shelf').value
     data.row = document.getElementById('row').value
+    data.quantity = document.getElementById('quantity').value
+
 
 
     data.token = localStorage.getItem('token');

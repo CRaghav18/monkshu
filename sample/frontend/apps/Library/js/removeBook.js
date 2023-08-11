@@ -19,23 +19,19 @@ const removeBook = function (isbn) {
         body: JSON.stringify(data)
     }
     )
-        .then(async (data) => {
+        .then(async (response) => {
 
-            if (data) {
+            let result = await response.json()
 
-                const book = document.getElementById(isbn);
-                if (book) {
-                    book.remove();
-                }
-
-                console.log('Book has been deleted');
-
-            } else { console.log('there was some error'); }
-
+            if (result.result) {
+                alert('Book Deleted Successfully');
+                window.location.reload();
+            } else {
+                showError('There is some error')
+            }
         }).catch(async (err) => {
 
-            console.log(err.message);
-
+            showError(await err)
         })
 };
 

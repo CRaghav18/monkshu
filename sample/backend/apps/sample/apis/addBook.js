@@ -23,7 +23,7 @@ let addBook = async (req) => {
         if (!validate.err) {
 
             let query = `INSERT INTO Books (Title, ISBN, Access_No, Price, Shelf_No, Row_No, Availability) 
-            VALUES('${req.title}', '${req.ISBN}', '${req.access}', ${req.price}, '${req.shelf}', '${req.row}', ${true});`
+            VALUES('${req.title}', '${req.ISBN}', '${req.access}', ${req.price}, '${req.shelf}', '${req.row}', ${req.quantity});`
 
             let query2 = `INSERT INTO Authors (Name) 
             VALUES('${req.author}')`
@@ -102,6 +102,7 @@ const validateData = (req) => {
     const price = req.price
     const shelf = req.shelf
     const row = req.row
+    const quantity = req.quantity
 
     if (!title) {
         result.err = { err: "Blank Name!" }
@@ -136,6 +137,10 @@ const validateData = (req) => {
         return result
     }
 
-    return result
+    if (!quantity) {
+        result.err = { err: "Blank Quantity!" }
+        return result
 
+    }
+    return result
 }

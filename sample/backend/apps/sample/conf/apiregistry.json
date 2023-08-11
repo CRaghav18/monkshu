@@ -1,5 +1,5 @@
 {
-  "/apis/login": "/apis/login.js?needsToken=false&addsToken=sub:{{{Role}}},flag:{{{result}}},id:{{{id}}}id:{{{id}}},UserName:{{{UserName}}},Email:{{{Email}}}",
+  "/apis/login": "/apis/login.js?needsToken=false&addsToken=sub:{{{Role}}},flag:{{{result}}},id:{{{id}}},UserName:{{{UserName}}},Email:{{{Email}}}",
   "/apis/getBooks": "/apis/getBooks.js?needsToken=true",
   "/apis/getUser": "/apis/getUser?needsToken=true",
   "/apis/addBook": "/apis/addBook?needsToken=true",

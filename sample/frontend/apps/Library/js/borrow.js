@@ -23,30 +23,27 @@ const borrow = function (isbn, bookName) {
         body: JSON.stringify(data)
     }
     )
-        .then(async (data) => {
+        .then(async (response) => {
 
-            let result = await data.json()
+            let result = await response.json()
 
-            if (result.err) {
+            console.log(result);
 
-                alert(result.err);
-                return
-
+            if (result.result) {
+                alert('Book Added Successfully');
+                window.location.reload();
             } else {
-                alert(result.message);
+                return (result.err)
             }
-            const book = document.getElementById(isbn);
-            if (book) {
-                console.log('Book has been added');
-                ;
-            }
-
         }).catch(async (err) => {
 
-            console.log(await err);
-
+            return (await err)
         })
+    // const book = document.getElementById(isbn);
+    // if (book) {
+    //     console.log('Book has been added');
+    //     ;
+    // }
 };
-
 
 export default borrow

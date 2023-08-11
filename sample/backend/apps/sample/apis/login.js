@@ -38,6 +38,7 @@ const login = async (jsonReq) => {
 
         const result = await db.getAllQuery(selectQuery, Email, API_CONSTANTS.APP_ROOT + '/db/library.db')
 
+        console.log("---------------");
         console.log(JSON.stringify(result.rows));
 
         if (!result.rows || result.rows.length === 0) {

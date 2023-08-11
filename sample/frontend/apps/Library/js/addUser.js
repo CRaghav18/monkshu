@@ -13,9 +13,14 @@ export const addUser = function () {
     data.email = document.getElementById('email').value
     data.pass = document.getElementById('pass').value
     data.type = document.getElementById('dropDown').value
-
+    data.UserType = localStorage.getItem('type');
     data.token = localStorage.getItem('token');
 
+    /*
+    if (data.UserType == data.type) {
+        alert('You cant add user on same level');
+        return;
+    }*/
     fetch(Backend_URL + '/addUser', {
         method: 'POST',
         headers: {

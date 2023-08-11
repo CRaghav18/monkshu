@@ -27,15 +27,22 @@ const bookReturn = function (isbn, bookName) {
 
             let result = await data.json()
 
+            console.log(result);
+
             if (result.err) {
 
                 alert(result.err);
                 return
 
             } else {
-                alert(result.message);
+                alert(result.message.data);
+                window.location.reload();
             }
-
+            const book = document.getElementById(isbn);
+            if (book) {
+                console.log('Book has been returned');
+                ;
+            }
 
         }).catch(async (err) => {
 
@@ -43,6 +50,7 @@ const bookReturn = function (isbn, bookName) {
 
         })
 };
+
 
 
 export default bookReturn
